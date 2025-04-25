@@ -14,9 +14,9 @@ export const createTask = (taskName: string): Task => {
 }
 
 export const addTask = async (newTodo: Task) => {
-  const rawData = await fs.readFile('output.json', {encoding: 'utf-8'});
+  let rawData = await fs.readFile('output.json', {encoding: 'utf-8'});
   const jsonData = JSON.parse(rawData);
-  
   jsonData.tasks = [...jsonData.tasks, newTodo];
-  await fs.writeFile('output.json', jsonData, {encoding: 'utf-8'});
+  
+  await fs.writeFile('output.json', JSON.stringify(jsonData), {encoding: 'utf-8'});
 }
