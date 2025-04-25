@@ -1,0 +1,29 @@
+{
+  "name": "task_tracker_cli",
+  "version": "1.0.0",
+  "description": "Proyect based on Roadmap.sh task tracker, made with javascript (Node Js)",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "tsx watch src/main.ts add \"Add Task\"",
+    "start": "node dist/main.js",
+    "build": "tsx build src/main.ts --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeLlamoOmar/task-tracker-cli.git"
+  },
+  "keywords": [],
+  "author": "Omar Bencosme Tio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MeLlamoOmar/task-tracker-cli/issues"
+  },
+  "homepage": "https://github.com/MeLlamoOmar/task-tracker-cli#readme",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.15.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
+}
