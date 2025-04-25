@@ -7,9 +7,11 @@
 type Task = {
   id: string;
   description: string;
-  status: "todo" | "in-progress" | "done";
+  status: TaskStatus
   createdAt: Date;
   updatedAt?: Date;
 }
+
+export type TaskStatus = "todo" | "in-progress" | "done";
 
 export default Task;
