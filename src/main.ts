@@ -13,9 +13,10 @@ const main = async () => {
 		case argsOptions.ADD:
 			console.log("Adding a task...");
 			const newTask: Task = createTask(args[1]);
-			addTask(newTask);
+			await addTask(newTask);
+			console.log(`Task added suscessuccessfully (ID: ${newTask.id})`);
 			break;
-		case argsOptions.REMOVE:
+		case argsOptions.DELETE:
 			console.log("Removing a task...");
 			break;
 		case argsOptions.UPDATE:
