@@ -1,6 +1,6 @@
 export enum argsOptions {
   ADD = "add",
-  REMOVE = "remove",
+  DELETE = "delete",
   UPDATE = "update",
   LIST = "list",
   MARK = "mark",
