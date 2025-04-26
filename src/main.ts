@@ -2,8 +2,8 @@
 
 import process from "node:process";
 
-import { argsOptions } from "./types/Task";
-import { addTask, deleteTask, listTasks, updateTask } from "./controller/taskController";
+import { ArgsOptions, MarkOptions } from "./types/Task";
+import { addTask, deleteTask, listTasks, markedOptions, updateTask } from "./controller/taskController";
 import { createTask } from "./util/util";
 
 import Task from "./types/Task";
@@ -13,29 +13,32 @@ const main = async () => {
 	const command = args[0];
 
 	switch (command) {
-		case argsOptions.ADD:
+		case ArgsOptions.ADD:
 			console.log("Adding a task...\n");
 			const newTask: Task = await createTask(args[1]);
 			await addTask(newTask);
 			console.log(`Task added suscessuccessfully (ID: ${newTask.id})`);
 			break;
-		case argsOptions.DELETE:
+		case ArgsOptions.DELETE:
 			const deleteTaskId = Number(args[1])
 			await deleteTask(deleteTaskId)
 			console.log("Removing a task...\n");
 			break;
-		case argsOptions.UPDATE:
+		case ArgsOptions.UPDATE:
 			console.log("Updating a task...\n");
 			const updatedTaskId = Number(args[1])
 			const descriptionUpdated = args[2]
 			await updateTask(updatedTaskId, descriptionUpdated)
 			break;
-		case argsOptions.LIST:
+		case ArgsOptions.LIST:
 			console.log("Listing tasks: \n");
 			await listTasks()
 			break;
-		case argsOptions.MARK:
+		case ArgsOptions.MARK:
 			console.log("Marking a task...\n");
+			const markOption = args[1]
+			const markId = Number(args[2])
+			await markedOptions(markOption as MarkOptions, markId)
 			break;
 		default:
 			console.error("Invalid command");

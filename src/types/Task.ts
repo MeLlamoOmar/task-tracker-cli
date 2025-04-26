@@ -18,12 +18,18 @@ type Task = {
 
 export type TaskStatus = "todo" | "in-progress" | "done";
 
-export enum argsOptions {
+export enum ArgsOptions {
   ADD = "add",
   DELETE = "delete",
   UPDATE = "update",
   LIST = "list",
   MARK = "mark",
+}
+
+export enum MarkOptions {
+  TODO = "todo",
+  INPROGRESS = "in-progress",
+  DONE = "done"
 }
 
 export default Task;

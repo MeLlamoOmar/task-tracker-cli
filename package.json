@@ -4,7 +4,7 @@
   "description": "Proyect based on Roadmap.sh task tracker, made with javascript (Node Js)",
   "main": "src/main.js",
   "scripts": {
-    "dev": "tsx watch src/main.ts update 1 \"Cambio Task\"",
+    "dev": "tsx watch src/main.ts mark done 1",
     "start": "node dist/main.js",
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
