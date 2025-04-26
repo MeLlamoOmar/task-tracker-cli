@@ -9,7 +9,7 @@ export type TaskJson = {
 }
 
 type Task = {
-  id: string;
+  id: number;
   description: string;
   status: TaskStatus
   createdAt: Date;
