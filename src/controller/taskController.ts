@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
-import Task, { MarkOptions, TaskJson } from '../types/Task';
-import { createCheckbox, getTasksList } from '../util/util';
+import Task, { MarkOptions } from '../types/Task.js';
+import { createCheckbox, getTasksList } from '../util/util.js';
 
 export const addTask = async (newTodo: Task) => {
   let taskList = await getTasksList();
@@ -13,7 +13,7 @@ export const listTasks = async (flagFilter = 'all') => {
   const taskList = await getTasksList()
   const filteredTaskList = flagFilter === 'all' 
   ? taskList.tasks 
-  : taskList.tasks.filter(task => task.status === flagFilter);
+  : taskList.tasks.filter((task: Task) => task.status === flagFilter);
 
   filteredTaskList.forEach((task: Task, index: number) => {
     const checkBox = createCheckbox(task.status);
@@ -24,7 +24,7 @@ export const listTasks = async (flagFilter = 'all') => {
 export const deleteTask = async (deleteId: number) => {
   const taskList = await getTasksList()
 
-  const filteredTaskList = taskList.tasks.filter(task => task.id !== deleteId)
+  const filteredTaskList = taskList.tasks.filter((task: Task) => task.id !== deleteId)
   taskList.tasks = filteredTaskList
 
   await fs.writeFile('output.json', JSON.stringify(taskList), {encoding: 'utf-8'});
@@ -32,7 +32,7 @@ export const deleteTask = async (deleteId: number) => {
 
 export const updateTask = async (updateId: number, updateDescription: string) => {
   const taskList = await getTasksList()
-  const filteredTaskList = taskList.tasks.filter(task => task.id === updateId)
+  const filteredTaskList = taskList.tasks.filter((task: Task) => task.id === updateId)
   
   filteredTaskList[0].description = updateDescription
   filteredTaskList[0].updatedAt = new Date(Date.now())
@@ -43,7 +43,7 @@ export const updateTask = async (updateId: number, updateDescription: string) =>
 
 export const markedOptions = async (markOption: MarkOptions, markId: number) => {
   const taskList = await getTasksList()
-  const filteredTaskList = taskList.tasks.filter(task => task.id === markId)
+  const filteredTaskList = taskList.tasks.filter((task: Task) => task.id === markId)
   
   switch (markOption) {
     case MarkOptions.DONE:

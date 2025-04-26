@@ -2,11 +2,9 @@
 
 import process from "node:process";
 
-import { ArgsOptions, MarkOptions } from "./types/Task";
-import { addTask, deleteTask, listTasks, markedOptions, updateTask } from "./controller/taskController";
-import { createTask } from "./util/util";
-
-import Task from "./types/Task";
+import Task, { ArgsOptions, MarkOptions } from "./types/Task.js";
+import { addTask, deleteTask, listTasks, markedOptions, updateTask } from "./controller/taskController.js";
+import { createTask } from "./util/util.js";
 
 const main = async () => {
 	const args = process.argv.slice(2);

@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 // import { randomUUID } from "node:crypto";
 
-import Task, { TaskJson, TaskStatus } from "../types/Task";
+import Task, { TaskJson, TaskStatus } from "../types/Task.js";
 
 export const createTask = async (taskName: string): Promise<Task> => {
   const taskList = await getTasksList();
