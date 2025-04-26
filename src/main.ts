@@ -3,7 +3,7 @@
 import process from "node:process";
 
 import { argsOptions } from "./types/Task";
-import { addTask, deleteTask, listTasks } from "./controller/taskController";
+import { addTask, deleteTask, listTasks, updateTask } from "./controller/taskController";
 import { createTask } from "./util/util";
 
 import Task from "./types/Task";
@@ -25,14 +25,17 @@ const main = async () => {
 			console.log("Removing a task...\n");
 			break;
 		case argsOptions.UPDATE:
-			console.log("Updating a task...");
+			console.log("Updating a task...\n");
+			const updatedTaskId = Number(args[1])
+			const descriptionUpdated = args[2]
+			await updateTask(updatedTaskId, descriptionUpdated)
 			break;
 		case argsOptions.LIST:
 			console.log("Listing tasks: \n");
 			await listTasks()
 			break;
 		case argsOptions.MARK:
-			console.log("Marking a task...");
+			console.log("Marking a task...\n");
 			break;
 		default:
 			console.error("Invalid command");
