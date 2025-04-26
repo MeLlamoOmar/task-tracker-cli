@@ -32,7 +32,12 @@ const main = async () => {
 			break;
 		case ArgsOptions.LIST:
 			console.log("Listing tasks: \n");
-			await listTasks()
+			const filterFlag = args[1]
+			if (!filterFlag) {
+				await listTasks()
+			} else {
+				await listTasks(filterFlag)
+			}
 			break;
 		case ArgsOptions.MARK:
 			console.log("Marking a task...\n");

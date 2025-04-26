@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import Task, { MarkOptions } from '../types/Task';
+import Task, { MarkOptions, TaskJson } from '../types/Task';
 import { createCheckbox, getTasksList } from '../util/util';
 
 export const addTask = async (newTodo: Task) => {
@@ -9,12 +9,15 @@ export const addTask = async (newTodo: Task) => {
   await fs.writeFile('output.json', JSON.stringify(taskList), {encoding: 'utf-8'});
 }
 
-export const listTasks = async () => {
+export const listTasks = async (flagFilter = 'all') => {
   const taskList = await getTasksList()
+  const filteredTaskList = flagFilter === 'all' 
+  ? taskList.tasks 
+  : taskList.tasks.filter(task => task.status === flagFilter);
 
-  taskList.tasks.forEach((task: Task, index: number) => {
+  filteredTaskList.forEach((task: Task, index: number) => {
     const checkBox = createCheckbox(task.status);
-    console.log(`${index + 1}) ${checkBox ? checkBox : 'error'} ${task.description}`)
+    console.log(`${index + 1}) ${checkBox ? checkBox : 'error'} ${task.description}`);
   });
 }
 
@@ -33,7 +36,7 @@ export const updateTask = async (updateId: number, updateDescription: string) =>
   
   filteredTaskList[0].description = updateDescription
   filteredTaskList[0].updatedAt = new Date(Date.now())
-  taskList.tasks.splice(updateId - 1, 1, filteredTaskList[0])
+  taskList.tasks.toSpliced(updateId - 1, 1, filteredTaskList[0])
   
   await fs.writeFile('output.json', JSON.stringify(taskList), {encoding: 'utf-8'});
 }
@@ -46,17 +49,17 @@ export const markedOptions = async (markOption: MarkOptions, markId: number) => 
     case MarkOptions.DONE:
       filteredTaskList[0].status = 'done'
       filteredTaskList[0].updatedAt = new Date(Date.now())
-      taskList.tasks.splice(markId - 1, 1, filteredTaskList[0])
+      taskList.tasks.toSpliced(markId - 1, 1, filteredTaskList[0])
       break;
     case MarkOptions.TODO:
       filteredTaskList[0].status = 'todo'
       filteredTaskList[0].updatedAt = new Date(Date.now())
-      taskList.tasks.splice(markId - 1, 1, filteredTaskList[0])
+      taskList.tasks.toSpliced(markId - 1, 1, filteredTaskList[0])
       break;
     case MarkOptions.INPROGRESS:
       filteredTaskList[0].status = 'in-progress'
       filteredTaskList[0].updatedAt = new Date(Date.now())
-      taskList.tasks.splice(markId - 1, 1, filteredTaskList[0])
+      taskList.tasks.toSpliced(markId - 1, 1, filteredTaskList[0])
       break;
     default:
       break;
