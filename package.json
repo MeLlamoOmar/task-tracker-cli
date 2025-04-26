@@ -4,9 +4,9 @@
   "description": "Proyect based on Roadmap.sh task tracker, made with javascript (Node Js)",
   "main": "src/main.js",
   "scripts": {
-    "dev": "tsx watch src/main.ts list",
+    "dev": "tsx watch src/main.ts delete 4",
     "start": "node dist/main.js",
-    "build": "tsx build src/main.ts --out-dir dist",
+    "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +25,8 @@
     "@types/node": "^22.15.2",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3"
+  },
+  "bin": {
+    "task-tracker-cli": "./dist/main.js"
   }
 }
