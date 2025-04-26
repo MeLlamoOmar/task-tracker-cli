@@ -62,6 +62,5 @@ export const markedOptions = async (markOption: MarkOptions, markId: number) => 
       break;
   }
   
-  listTasks()
   await fs.writeFile('output.json', JSON.stringify(taskList), {encoding: 'utf-8'});
 }
