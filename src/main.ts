@@ -1,7 +1,9 @@
+#!/usr/bin/env node
+
 import process from "node:process";
 
-import { argsOptions } from "./types/const.d";
-import { addTask, listTasks } from "./controller/taskController";
+import { argsOptions } from "./types/Task";
+import { addTask, deleteTask, listTasks } from "./controller/taskController";
 import { createTask } from "./util/util";
 
 import Task from "./types/Task";
@@ -18,7 +20,9 @@ const main = async () => {
 			console.log(`Task added suscessuccessfully (ID: ${newTask.id})`);
 			break;
 		case argsOptions.DELETE:
-			console.log("Removing a task...");
+			const deleteTaskId = Number(args[1])
+			await deleteTask(deleteTaskId)
+			console.log("Removing a task...\n");
 			break;
 		case argsOptions.UPDATE:
 			console.log("Updating a task...");
