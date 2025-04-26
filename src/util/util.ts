@@ -1,4 +1,6 @@
-import { TaskStatus } from "../types/Task";
+import { readFile } from "node:fs/promises";
+
+import Task, { TaskJson, TaskStatus } from "../types/Task";
 
 export const createCheckbox = (status: TaskStatus): string | undefined => {
   switch (status) {
@@ -11,4 +13,18 @@ export const createCheckbox = (status: TaskStatus): string | undefined => {
     default:
       break;
   }
+}
+
+export const getTasksList = async (): Promise<TaskJson> => {
+  let jsonData: TaskJson
+  const rawData = await readFile('output.json', {encoding: 'utf-8'});
+  if (rawData.length === 0) {
+    jsonData = {
+      tasks: []
+    }
+  } else {
+    jsonData = JSON.parse(rawData).tasks;
+  }
+
+  return jsonData;
 }
