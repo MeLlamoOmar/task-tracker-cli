@@ -4,6 +4,10 @@
 // createdAt: The date and time when the task was created
 // updatedAt: The date and time when the task was last updated
 
+export type TaskJson = {
+  tasks: Task[]
+}
+
 type Task = {
   id: string;
   description: string;
