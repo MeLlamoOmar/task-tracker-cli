@@ -11,6 +11,8 @@ TaskCLI es una herramienta de línea de comandos (CLI) para gestionar tareas. Pe
 3. Instala las dependencias necesarias ejecutando:
    ```bash
    npm install
+   npm run build
+   npm i -g
    ```
 
 ---
@@ -20,7 +22,7 @@ TaskCLI es una herramienta de línea de comandos (CLI) para gestionar tareas. Pe
 Ejecuta el programa desde la terminal utilizando el siguiente comando:
 
 ```bash
-node task-cli.js <comando> [argumentos]
+node task-cli <comando> [argumentos]
 ```
 
 ### **Comandos Disponibles**
@@ -29,33 +31,33 @@ node task-cli.js <comando> [argumentos]
 Agrega una nueva tarea con una descripción.
 
 ```bash
-node task-cli.js add "Descripción de la tarea"
+node task-cli add "Descripción de la tarea"
 ```
 - **Ejemplo**:
   ```bash
-  node task-cli.js add "Terminar el proyecto de CLI"
+  node task-cli add "Terminar el proyecto de CLI"
   ```
 
 #### **2. Eliminar una tarea**
 Elimina una tarea existente utilizando su ID.
 
 ```bash
-node task-cli.js delete <id>
+task-cli delete <id>
 ```
 - **Ejemplo**:
   ```bash
-  node task-cli.js delete 3
+  task-cli delete 3
   ```
 
 #### **3. Actualizar una tarea**
 Actualiza la descripción de una tarea específica.
 
 ```bash
-node task-cli.js update <id> "Nueva descripción"
+task-cli update <id> "Nueva descripción"
 ```
 - **Ejemplo**:
   ```bash
-  node task-cli.js update 1 "Revisar documentación del proyecto"
+  task-cli update 1 "Revisar documentación del proyecto"
   ```
 
 #### **4. Marcar el estado de una tarea**
@@ -63,57 +65,57 @@ Actualiza el estado de una tarea existente.
 
 - **Marcar como completada**:
   ```bash
-  node task-cli.js mark done <id>
+  task-cli mark done <id>
   ```
   - **Ejemplo**:
     ```bash
-    node task-cli.js mark done 2
+    task-cli mark done 2
     ```
 
 - **Marcar como en progreso**:
   ```bash
-  node task-cli.js mark in-progress <id>
+  task-cli mark in-progress <id>
   ```
   - **Ejemplo**:
     ```bash
-    node task-cli.js mark in-progress 3
+    task-cli mark in-progress 3
     ```
 
 - **Marcar como pendiente**:
   ```bash
-  node task-cli.js mark todo <id>
+  task-cli mark todo <id>
   ```
   - **Ejemplo**:
     ```bash
-    node task-cli.js mark todo 4
+    task-cli mark todo 4
     ```
 
 #### **5. Listar todas las tareas**
 Muestra todas las tareas existentes en el sistema.
 
 ```bash
-node task-cli.js list
+task-cli list
 ```
 
 #### **6. Listar tareas completadas**
 Muestra todas las tareas que están marcadas como completadas (`done`).
 
 ```bash
-node task-cli.js list done
+node task-cli list done
 ```
 
 #### **7. Listar tareas en progreso**
 Muestra todas las tareas que están en progreso (`in-progress`).
 
 ```bash
-node task-cli.js list in-progress
+node task-cli list in-progress
 ```
 
 #### **8. Listar tareas pendientes**
 Muestra todas las tareas pendientes (`todo`).
 
 ```bash
-node task-cli.js list todo
+node task-cli list todo
 ```
 
 ---
@@ -123,18 +125,6 @@ node task-cli.js list todo
 - **todo**: Tareas que aún no se han iniciado.
 - **in-progress**: Tareas que están en proceso.
 - **done**: Tareas completadas.
-
----
-
-## **Estructura del Proyecto**
-
-```
-/src
-  /tasks.js       # Lógica para gestionar las tareas
-  /cli.js         # Manejo de argumentos de la CLI
-README.md          # Documentación
-package.json       # Dependencias y configuración del proyecto
-```
 
 ---
 
