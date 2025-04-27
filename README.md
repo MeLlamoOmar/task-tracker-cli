@@ -150,4 +150,4 @@ Este proyecto está licenciado bajo la [MIT License](LICENSE).
 
 ## **Autor**
 
-Creado por **[Omar Alexander Bencosme Tio]**.
+Creado por **Omar Alexander Bencosme Tio**.
